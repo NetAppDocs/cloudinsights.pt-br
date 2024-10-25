@@ -234,7 +234,10 @@ Se a conta AD/LDAP for usada, o comando deve ser
  security login create -user-or-group-name DOMAIN\aduser/adgroup -application ontapi -authentication-method domain -role ci_readonly
 Se estiver a recolher dados do comutador de cluster:
 
- security login rest-role create -role ci_readonly -api /api/network/ethernet -access readonly
+....
+security login rest-role create -role ci_readonly_rest -api /api/network/ethernet -access readonly
+security login create -user-or-group-name ci_user -application http -authmethod password -role ci_readonly_rest
+....
 A função resultante e o login do usuário serão parecidos com o seguinte. Sua saída real pode variar:
 
 ....
